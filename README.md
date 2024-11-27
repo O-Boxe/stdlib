@@ -16,7 +16,7 @@ return type :
 * `Result<(), Box<dyn std::error::Error>>`
 
 ```rust
-match create_file(
+        match create_file(
             String::from("hello wordl"),
             "../uploads/testDeCreation/001.txt"
         ) {
@@ -48,7 +48,7 @@ return type :
 exemple :
 
 ```rust
-match upload_file_from(
+        match upload_file_from(
             "https://server11.mp3quran.net/hazza/001.mp3",
             "../uploads/test/001.mp3"
         ) {
@@ -74,7 +74,7 @@ return type :
 exemple :
 
 ```rust
-match upload_file_from_cb(
+        match upload_file_from_cb(
             "https://server11.mp3quran.net/hazza/001.mp3",
             "../uploads/test/001.mp3",
             |progress|{println!("{}%", progress)}
@@ -107,7 +107,7 @@ return type :
 exemple :
 
 ```rust
-match delete_file("") {
+        match delete_file("") {
             Ok(_) => println!("File successfully deleted !"), 
             Err(e) => eprintln!("Error : {}", e) 
         }
@@ -128,7 +128,7 @@ return type :
 exemple :
 
 ```rust
-match delete_folder("") {
+        match delete_folder("") {
             Ok(_) => println!("File successfully deleted !"), 
             Err(e) => eprintln!("Error : {}", e) 
         }
@@ -149,7 +149,7 @@ return type :
 exemple :
 
 ```rust
-match delete_fof("") {
+        match delete_fof("") {
             Ok(_) => println!("File successfully deleted !"), 
             Err(e) => eprintln!("Error : {}", e) 
         }
