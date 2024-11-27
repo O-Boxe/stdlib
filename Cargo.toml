@@ -1,0 +1,18 @@
+[package]
+name = "fsp"
+version = "0.1.0"
+edition = "2021"
+
+license = "MIT"
+license-file = "LICENSE"
+
+readme = "README.md"
+
+description = "File System Plus  is a package that provide create, update and delete operation on file syteme"
+
+documentation = "https://github.com/O-Boxe/stdlib/tree/fsp---file-system-%2B"
+homepage = "https://github.com/O-Boxe/stdlib/tree/fsp---file-system-%2B"
+repository = "https://github.com/O-Boxe/stdlib/tree/fsp---file-system-%2B"
+
+[dependencies]
+reqwest = { version = "0.11", features = ["blocking"] }
