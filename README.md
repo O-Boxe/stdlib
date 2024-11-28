@@ -27,6 +27,25 @@ return type :
         }
 ```
 
+## append content to a file
+
+### `append_to_file()`
+
+he take 2 parametres :
+
+1. `file_path` : the path of the file that you want to apopend content
+2. `content` : the content you want tu append
+
+return type :
+
+* `io::Result<()>`
+
+exemple :
+
+```rust
+        append_to_file("../uploads/testDeCreation/001.txt", "\n some txt \n").expect("Error");
+```
+
 ## upload a file
 
 for uploading a file there is 2 functions :

@@ -1,5 +1,5 @@
 use reqwest::blocking::Client;
-use std::fs::File;
+use std::fs::{File, OpenOptions};
 use std::io::{self, Read, Write};
 use std::path::Path;
 
@@ -18,6 +18,20 @@ pub fn create_file(content: String, output_path: &str) -> Result<(), Box<dyn std
 
     Ok(())
 }
+
+pub fn append_to_file(file_path: &str, content: &str) -> io::Result<()> {
+    // Ouvre le fichier en mode append (ajout)
+    let mut file = OpenOptions::new()
+        .append(true)
+        .create(true) // Crée le fichier s'il n'existe pas
+        .open(file_path)?;
+
+    // Écrit le contenu à la fin du fichier
+    writeln!(file, "{}", content)?;
+
+    Ok(())
+}
+
 
 /* -----------------------------------------------update file----------------------------------------------- */
 pub fn upload_file_from_cb<F>(
@@ -168,10 +182,12 @@ mod tests {
             Err(e) => eprintln!("Erreur : {}", e),
         }
 
-        match delete_fof("../uploads/testDeCreation/001.txt") {
-            Ok(_) => println!("File successfully deleted !"), 
-            Err(e) => eprintln!("Error : {}", e) 
-        }
+        // match delete_fof("../uploads/testDeCreation/001.txt") {
+        //     Ok(_) => println!("File successfully deleted !"), 
+        //     Err(e) => eprintln!("Error : {}", e) 
+        // }
+
+        append_to_file("../uploads/testDeCreation/001.txt", "\n du texte en plus \n").expect("Error");
 
     }
 }
