@@ -4,6 +4,24 @@ fsp or file system plus is a crates that provides some function that help you to
 
 > note : this project is not complete so after updating this package check everytime if everything is compatible with the previous version
 
+## verify if a file/folder exists
+
+he take 1 parametre :
+
+1. `path` : the path of the folder or the file
+
+return type :
+
+* `bool`
+
+exemple :
+
+```rust
+        let file_exists = file_exists("../uploads/testDeCreation/001.txt");
+
+        println!("file is present ? -> {file_exists}");
+```
+
 ## create file
 
 ### `create_file()`

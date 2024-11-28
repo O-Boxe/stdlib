@@ -205,5 +205,9 @@ mod tests {
 
         append_to_file("../uploads/testDeCreation/001.txt", "\n du texte en plus \n").expect("Error");
 
+        let file_exists = file_exists("../uploads/testDeCreation/001.txt");
+
+        println!("file is present ? -> {file_exists}");
+
     }
 }
