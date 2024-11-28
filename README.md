@@ -14,6 +14,7 @@ return type :
 
 * `bool`
 
+
 exemple :
 
 ```rust
@@ -31,6 +32,17 @@ he take 1 parametre :
 return type :
 
 * `Result<String, io::Error>`
+
+exemple :
+
+```rust
+match read_file_content("../uploads/testDeCreation/001.txt") {
+    Ok(content)=>{
+        println!("content : {content}")
+    },
+    Err(e)=> eprintln!("Error : {e}")
+}
+```
 
 ## create file
 
