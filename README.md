@@ -17,9 +17,9 @@ return type :
 exemple :
 
 ```rust
-        let file_exists = file_exists("../uploads/testDeCreation/001.txt");
+let file_exists = file_exists("../uploads/testDeCreation/001.txt");
 
-        println!("file is present ? -> {file_exists}");
+println!("file is present ? -> {file_exists}");
 ```
 
 ## create file
@@ -36,15 +36,15 @@ return type :
 * `Result<(), Box<dyn std::error::Error>>`
 
 ```rust
-        match create_file(
-            String::from("hello wordl"),
-            "../uploads/testDeCreation/001.txt"
-        ) {
-            Ok(_) => {
-                println!("Fichier crée avec succès !")
-            }
-            Err(e) => eprintln!("Erreur : {}", e),
-        }
+match create_file(
+    String::from("hello wordl"),
+    "../uploads/testDeCreation/001.txt"
+) {
+    Ok(_) => {
+        println!("Fichier crée avec succès !")
+    }
+    Err(e) => eprintln!("Erreur : {}", e),
+}
 ```
 
 ## append content to a file
@@ -63,7 +63,7 @@ return type :
 exemple :
 
 ```rust
-        append_to_file("../uploads/testDeCreation/001.txt", "\n some txt \n").expect("Error");
+append_to_file("../uploads/testDeCreation/001.txt", "\n some txt \n").expect("Error");
 ```
 
 ## upload a file
@@ -87,15 +87,15 @@ return type :
 exemple :
 
 ```rust
-        match upload_file_from(
-            "https://server11.mp3quran.net/hazza/001.mp3",
-            "../uploads/test/001.mp3"
-        ) {
-            Ok(_) => {
-                println!("File upload successfully !")
-            }
-            Err(e) => eprintln!("Error : {}", e),
-        }
+match upload_file_from(
+    "https://server11.mp3quran.net/hazza/001.mp3",
+    "../uploads/test/001.mp3"
+) {
+    Ok(_) => {
+        println!("File upload successfully !")
+    }
+    Err(e) => eprintln!("Error : {}", e),
+}
 ```
 
 ### `upload_file_from_cb()`
@@ -113,16 +113,16 @@ return type :
 exemple :
 
 ```rust
-        match upload_file_from_cb(
-            "https://server11.mp3quran.net/hazza/001.mp3",
-            "../uploads/test/001.mp3",
-            |progress|{println!("{}%", progress)}
-        ) {
-            Ok(_) => {
-                println!("File upload successfully !")
-            }
-            Err(e) => eprintln!("Erreur : {}", e),
-        }
+match upload_file_from_cb(
+    "https://server11.mp3quran.net/hazza/001.mp3",
+    "../uploads/test/001.mp3",
+    |progress|{println!("{}%", progress)}
+) {
+    Ok(_) => {
+        println!("File upload successfully !")
+    }
+    Err(e) => eprintln!("Erreur : {}", e),
+}
 ```
 
 ## delete a file/folder
@@ -146,12 +146,12 @@ return type :
 exemple :
 
 ```rust
-        match delete_file("") {
-            Ok(_) => println!("File successfully deleted !"), 
-            Err(e) => eprintln!("Error : {}", e) 
-        }
-        //or
-        delete_file("../uploads/testDeCreation/001.txt").expect("Error");
+match delete_file("") {
+    Ok(_) => println!("File successfully deleted !"), 
+    Err(e) => eprintln!("Error : {}", e) 
+}
+//or
+delete_file("../uploads/testDeCreation/001.txt").expect("Error");
 ```
 
 ### `delete_folder()`
@@ -167,12 +167,12 @@ return type :
 exemple :
 
 ```rust
-        match delete_folder("") {
-            Ok(_) => println!("File successfully deleted !"), 
-            Err(e) => eprintln!("Error : {}", e) 
-        }
-        //or
-        delete_folder("../uploads/testDeCreation/001.txt").expect("Error");
+match delete_folder("") {
+    Ok(_) => println!("File successfully deleted !"), 
+    Err(e) => eprintln!("Error : {}", e) 
+}
+//or
+delete_folder("../uploads/testDeCreation/001.txt").expect("Error");
 ```
 
 ### `delete_fof()` (fof = file or folder)
@@ -188,10 +188,10 @@ return type :
 exemple :
 
 ```rust
-        match delete_fof("") {
-            Ok(_) => println!("File successfully deleted !"), 
-            Err(e) => eprintln!("Error : {}", e) 
-        }
-        //or
-        delete_fof("../uploads/testDeCreation/001.txt").expect("Error");
+match delete_fof("") {
+    Ok(_) => println!("File successfully deleted !"), 
+    Err(e) => eprintln!("Error : {}", e) 
+}
+//or
+delete_fof("../uploads/testDeCreation/001.txt").expect("Error");
 ```
