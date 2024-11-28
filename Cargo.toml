@@ -16,7 +16,7 @@ documentation = "https://github.com/O-Boxe/stdlib/tree/fsp---file-system-%2B"
 homepage = "https://github.com/O-Boxe/stdlib/tree/fsp---file-system-%2B"
 repository = "https://github.com/O-Boxe/stdlib/tree/fsp---file-system-%2B"
 
-keywords = ["filesystem", "easy to use"]
+keywords = ["filesystem", "easy_to_use"]
 categories = ["filesysteme"]
 [dependencies]
 reqwest = { version = "0.11", features = ["blocking"] }
