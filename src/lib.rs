@@ -4,6 +4,18 @@ use std::io::{self, Read, Write};
 use std::path::Path;
 
 
+/* -----------------------------------------------file exist----------------------------------------------- */
+
+pub fn file_exists(path : &str) -> bool {
+    let file_path = Path::new(path);
+
+    if file_path.exists() {
+        return true;
+    }
+
+    return false;
+}
+
 /* -----------------------------------------------create file----------------------------------------------- */
 
 pub fn create_file(content: String, output_path: &str) -> Result<(), Box<dyn std::error::Error>> {
@@ -19,6 +31,9 @@ pub fn create_file(content: String, output_path: &str) -> Result<(), Box<dyn std
     Ok(())
 }
 
+/* -----------------------------------------------append to file----------------------------------------------- */
+
+
 pub fn append_to_file(file_path: &str, content: &str) -> io::Result<()> {
     // Ouvre le fichier en mode append (ajout)
     let mut file = OpenOptions::new()
@@ -31,6 +46,7 @@ pub fn append_to_file(file_path: &str, content: &str) -> io::Result<()> {
 
     Ok(())
 }
+
 
 
 /* -----------------------------------------------update file----------------------------------------------- */

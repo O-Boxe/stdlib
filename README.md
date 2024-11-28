@@ -2,6 +2,8 @@
 
 fsp or file system plus is a crates that provides some function that help you to create, upload, delete files
 
+> note : this project is not complete so after updating this package check everytime if everything is compatible with the previous version
+
 ## create file
 
 ### `create_file()`
