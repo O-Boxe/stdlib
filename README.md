@@ -22,6 +22,16 @@ let file_exists = file_exists("../uploads/testDeCreation/001.txt");
 println!("file is present ? -> {file_exists}");
 ```
 
+## read file
+
+he take 1 parametre :
+
+1. `path` : the path of the file
+
+return type :
+
+* `Result<String, io::Error>`
+
 ## create file
 
 ### `create_file()`

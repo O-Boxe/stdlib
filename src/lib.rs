@@ -15,6 +15,10 @@ pub fn file_exists(path : &str) -> bool {
 
     return false;
 }
+/* -----------------------------------------------read file----------------------------------------------- */
+pub fn read_file_content(path: &str) -> Result<String, io::Error> {
+    std::fs::read_to_string(path)
+}
 
 /* -----------------------------------------------create file----------------------------------------------- */
 
@@ -208,6 +212,13 @@ mod tests {
         let file_exists = file_exists("../uploads/testDeCreation/001.txt");
 
         println!("file is present ? -> {file_exists}");
+
+        match read_file_content("../uploads/testDeCreation/001.txt") {
+            Ok(content)=>{
+                println!("content : {content}")
+            },
+            Err(e)=> eprintln!("Error : {e}")
+        }
 
     }
 }
