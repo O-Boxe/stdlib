@@ -57,7 +57,6 @@ pub fn append_to_file(file_path: &str, content: &str) -> io::Result<()> {
 pub fn upload_file_from_cb<F>(
     from_path: &str,
     to_path: &str,
-    file_name: &str,
     callback: F,
 ) -> Result<(), Box<dyn std::error::Error>>
 where
@@ -76,8 +75,7 @@ where
     ensure_folder_exists(to_path)?;
 
     // create file
-    let file_path = format!("{}{}", to_path, file_name);
-    let mut file = File::create(file_path)?;
+    let mut file = File::create(to_path)?;
 
     // upload avec progression
     let mut downloaded: u64 = 0;
@@ -103,9 +101,8 @@ where
 pub fn upload_file_from(
     from_path: &str,
     to_path: &str,
-    file_name: &str,
 ) -> Result<(), Box<dyn std::error::Error>> {
-    upload_file_from_cb(from_path, to_path, file_name, |_| {})
+    upload_file_from_cb(from_path, to_path, |_| {})
 }
 
 
@@ -146,17 +143,17 @@ pub fn delete_fof(target_path: impl AsRef<str>) -> io::Result<()> {
 
 
 /* ------------------------------------------------utils------------------------------------------------ */
-fn ensure_folder_exists(folder_path: impl AsRef<str>) -> io::Result<()> {
-    let path = folder_path.as_ref();
+fn ensure_folder_exists(folder_path: &str) -> io::Result<()> {
 
     // Créez un chemin Path à partir de la chaîne de caractères
-    let path = Path::new(path);
-
-    // Si le chemin est un fichier, obtenir son dossier parent
-    if let Some(parent) = path.parent() {
-        // Crée le dossier parent si nécessaire
-        std::fs::create_dir_all(parent)?;
+    if let Some(parent_path) = Path::new(folder_path).parent() {
+        // Créer tous les dossiers nécessaires
+        std::fs::create_dir_all(parent_path)?;
+        println!("Dossiers créés avec succès !");
+    } else {
+        println!("Impossible de déterminer le chemin parent !");
     }
+
 
     Ok(())
 }
@@ -170,8 +167,7 @@ mod tests {
 
         match upload_file_from(
             "https://server11.mp3quran.net/hazza/001.mp3",
-            "../uploads/audio",
-            "001.mp3"
+            "../uploads/audio/001.mp3",
         ) {
             Ok(_) => {
                 println!("Fichier téléchargé avec succès !")
@@ -181,8 +177,7 @@ mod tests {
 
         match upload_file_from_cb(
             "https://server11.mp3quran.net/hazza/013.mp3",
-            "../uploads/audio",
-            "013.mp3",
+            "../uploads/audio/test/mushaf_121/013.mp3",
             |progress| {println!("progression : {}%", progress)}
         ) {
             Ok(_) => {
